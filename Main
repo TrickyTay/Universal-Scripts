@@ -1,17 +1,18 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
+
 local Window = Rayfield:CreateWindow({
    Name = "Universal Scripts",
-   LoadingTitle = "Loading, Universal Scripts",
+   LoadingTitle = "Loading Universal Scripts",
    LoadingSubtitle = "by Versymn",
    ConfigurationSaving = {
       Enabled = true,
       FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "Versymns Universal Scripts"
+      FileName = "Universal Scripts"
    },
    Discord = {
-      Enabled = false,
-      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      Enabled = true,
+      Invite = "https://discord.gg/PV6teHXUHM",
       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
    },
    KeySystem = false, -- Set this to true to use our key system
@@ -26,17 +27,19 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
-local Slider = MainTab:CreateSlider({
-    Name = "Walkspeed",
-    Range = {16, 250},
-    Increment = 10,
-    Suffix = "Walkspeed",
-    CurrentValue = 10,
-    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+local MainTab = MainWindow:CreateTab("Main", 4483362458) -- Title, Image
+ 
+ 
+ local Button = MainTab:CreateButton({
+    Name = "print 'hello'",
     Callback = function(v)
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+        v = print('hello')
     end,
  })
+ 
+ 
+ 
  
  local Toggle = MainTab:CreateToggle({
     Name = "Infinite Jump",
@@ -52,6 +55,22 @@ local Slider = MainTab:CreateSlider({
     end,
  })
  
+ 
+ 
+ local Slider = MainTab:CreateSlider({
+    Name = "Walkspeed",
+    Range = {16, 250},
+    Increment = 10,
+    Suffix = "Walkspeed",
+    CurrentValue = 10,
+    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(v)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end,
+ })
+ 
+ 
+ 
  local Slider = MainTab:CreateSlider({
     Name = "JumpPower",
     Range = {50, 500},
@@ -65,4 +84,15 @@ local Slider = MainTab:CreateSlider({
  })
  
  
+ local Toggle = Tab:CreateToggle({
+   Name = "Aimbot",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   _G.AimbotEnabled = true -- Determines whether or not the Aimbot script will lock onto players.
+_G.TeamCheck = false -- If set to true then the script would only lock your aim at enemy team members.
+_G.AimPart = "Head" -- What body part of the closest enemy the aimbot script would lock at.
+_G.Sensitivity = 0 -- How many seconds it takes for the aimbot script to officially lock onto the target's aimpart.
+   end,
+})
 
