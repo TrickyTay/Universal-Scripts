@@ -8,7 +8,7 @@ local Window = Rayfield:CreateWindow({
    ConfigurationSaving = {
       Enabled = true,
       FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "Universal Scripts"
+      FileName = "UniversalScripts"
    },
    Discord = {
       Enabled = true,
@@ -96,3 +96,5 @@ _G.Sensitivity = 0 -- How many seconds it takes for the aimbot script to officia
    end,
 })
 
+
+Rayfield:LoadConfiguration()A
